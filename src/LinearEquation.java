@@ -12,11 +12,11 @@ public class LinearEquation {
     }
 
     public double roundHundredth(double input){
-        return ((int)(input*100))/100;
+        return (double) ((int) (input * 100)) /100;
     }
 
     public String getPointCoordinates(){
-        return("The coordinates of point 1 are (" + x1 + ", " + y1 + ") and the coordinates of point 2 are (" + x1 + ", " + y2 + ")");
+        return("The coordinates of point 1 are (" + x1 + ", " + y1 + ") and the coordinates of point 2 are (" + x2 + ", " + y2 + ")");
     }
 
     public double getSlope(){
@@ -32,7 +32,19 @@ public class LinearEquation {
             if(getSlope()==1){
                 //slope is 1
                 if(getYIntercept()==0) {
-                    return ("y = x " + getYIntercept());
+                    if(getYIntercept()%1==0) {
+                        if(getYIntercept()<0){
+                            return("y = x -" + Math.abs((int)getYIntercept()));
+                        }else {
+                            return ("y = x +" + (int) getYIntercept());
+                        }
+                    }else{
+                        if(getYIntercept()<0){
+                            return ("y = x - " + Math.abs(getYIntercept()));
+                        }else {
+                            return ("y = x +" + getYIntercept());
+                        }
+                    }
                 }else{
                     return ("y = x ");
                 }
@@ -41,15 +53,51 @@ public class LinearEquation {
                 if(getYIntercept()==0) {
                     return ("y=-x");
                 }else {
-                    return ("y = -x " + getYIntercept());
+                    if(getYIntercept()%1==0){
+                        if(getYIntercept()<0){
+                            return ("y = -x - " + Math.abs(getYIntercept()));
+                        }else {
+                            return ("y = -x + " + (int) getYIntercept());
+                        }
+                    }else {
+                        if(getYIntercept()<0){
+                            return ("y = -x - " + Math.abs(getYIntercept()));
+                        }else{
+                            return ("y = -x + " + getYIntercept());
+                        }
+                    }
                 }
             }else if (getSlope() == 0){
                 //slope is 0
-                return("y= " + getYIntercept());
+                if(getYIntercept()%1==0){
+                    if(getYIntercept()<0){
+                        return("y = -" + Math.abs(getYIntercept()));
+                    }else {
+                        return ("y = " + getYIntercept());
+                    }
+                }else {
+                    if(getYIntercept()<0){
+                        return("y = -" + Math.abs(getYIntercept()));
+                    }else {
+                        return ("y = " + getYIntercept());
+                    }
+                }
             }else{
                 //slope is a whole number, not 1, 0, or -1
-                if(getYIntercept()==0) {
-                    return "y = " + ((int) getSlope()) + "x + " + getYIntercept();
+                if(getYIntercept()!=0) {
+                    if(getYIntercept()%1==0){
+                        if(getYIntercept()<0){
+                            return("y = " + (int) getSlope() + "x - " + Math.abs((int) getYIntercept()));
+                        }else {
+                            return ("y = " + (int) getSlope() + "x + " + (int) getYIntercept());
+                        }
+                    }else {
+                        if(getYIntercept()<0){
+                            return "y = " + ((int) getSlope()) + "x - " + Math.abs(getYIntercept());
+                        }else {
+                            return "y = " + ((int) getSlope()) + "x + " + getYIntercept();
+                        }
+                    }
                 }else{
                     return "y = " + ((int) getSlope()) + "x";
                 }
@@ -60,21 +108,45 @@ public class LinearEquation {
                 if(getYIntercept()==0) {
                     return "y = " + "-" + Math.abs(y2 - y1) + "/" + Math.abs(x2 - x1) + "x";
                 }else{
-                    return "y = " + "-" + Math.abs(y2 - y1) + "/" + Math.abs(x2 - x1) + "x + " + getYIntercept();
+                    if(getYIntercept()%1==0){
+                        if(getYIntercept()<0){
+                            return "y = " + "-" + Math.abs(y2 - y1) + "/" + Math.abs(x2 - x1) + "x - " + Math.abs((int) getYIntercept());
+                        }else {
+                            return "y = " + "-" + Math.abs(y2 - y1) + "/" + Math.abs(x2 - x1) + "x + " + (int) getYIntercept();
+                        }
+                    }else {
+                        if(getYIntercept()<0) {
+                            return "y = " + "-" + Math.abs(y2 - y1) + "/" + Math.abs(x2 - x1) + "x - " + Math.abs(getYIntercept());
+                        }else{
+                            return "y = " + "-" + Math.abs(y2 - y1) + "/" + Math.abs(x2 - x1) + "x + " + getYIntercept();
+                        }
+                    }
                 }
             }else{
                 //slope is in fraction form, and positive
                 if(getYIntercept()==0) {
                     return "y = " + Math.abs(y2 - y1) + "/" + Math.abs(x2 - x1) + "x";
                 }else{
-                    return "y = " + Math.abs(y2 - y1) + "/" + Math.abs(x2 - x1) + "x + " + getYIntercept();
+                    if(getYIntercept()%1==0) {
+                        if(getYIntercept()<0){
+                            return "y = " + Math.abs(y2 - y1) + "/" + Math.abs(x2 - x1) + "x - " + Math.abs((int) getYIntercept());
+                        }else {
+                            return "y = " + Math.abs(y2 - y1) + "/" + Math.abs(x2 - x1) + "x + " + (int) getYIntercept();
+                        }
+                    }else{
+                        if(getYIntercept()<0){
+                            return "y = " + Math.abs(y2 - y1) + "/" + Math.abs(x2 - x1) + "x - " + Math.abs(getYIntercept());
+                        }else {
+                            return "y = " + Math.abs(y2 - y1) + "/" + Math.abs(x2 - x1) + "x + " + getYIntercept();
+                        }
+                    }
                 }
             }
         }
     }
 
     public double getDistance(){
-        return roundHundredth(Math.sqrt(Math.pow(x2-x1,2)+Math.pow(y2-y1,2)));
+        return roundHundredth(Math.sqrt(Math.pow(Math.abs(x2-x1),2)+Math.pow(Math.abs(y2-y1),2)));
     }
 
     public String lineInfo(){

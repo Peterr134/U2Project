@@ -12,11 +12,15 @@ public class LinearEquationRunner {
         double x2 = Double.parseDouble(coord2.substring(1,coord2.indexOf(",")));
         double y2 = Double.parseDouble(coord2.substring(coord2.indexOf(",")+1,coord2.indexOf(")")));
         System.out.println();
+        if(x1==x2){
+            System.out.println("That line's slope is incompatable with this calculator");
+            System.exit(1);
+        }
         LinearEquation lineq = new LinearEquation(x1,y1,x2,y2);
         System.out.println(lineq.lineInfo());
         System.out.println();
         System.out.print("Enter a value for X: ");
         x1 = scanner.nextDouble();
-        System.out.println("This point on the line is (" + x1 + ", " + (x1*lineq.getSlope()+ lineq.getYIntercept()) + ")");
+        System.out.println("This point on the line is (" + x1 + ", " + lineq.roundHundredth(x1*lineq.getSlope()+ lineq.getYIntercept()) + ")");
     }
 }
