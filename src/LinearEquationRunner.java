@@ -1,8 +1,15 @@
 import java.util.Scanner;
+
 public class LinearEquationRunner {
+    public static String start (String name){
+        return ("Welcome " + name + "!");
+    }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome! Please input coordinates in this format: (x,y)");
+        System.out.println("Please input your name");
+        String username = scanner.nextLine();
+        System.out.println(start(username));
+        System.out.println("Please input coordinates in this format: (x,y)");
         System.out.print("Enter coordinate 1: ");
         String coord1 = scanner.nextLine();
         double x1 = Double.parseDouble(coord1.substring(1,coord1.indexOf(",")));
